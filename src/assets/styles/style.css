@@ -8,3 +8,14 @@
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
 }
+
+.top {
+    width: 100vw;
+    height: 67px;
+    background-color: var(--gray);
+    color: var(--orange);
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
