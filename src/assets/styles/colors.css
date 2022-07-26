@@ -1,0 +1,24 @@
+:root { /*   Color Palette   */
+    --gray: #C3CFD9;
+    --orange: #E8833A;
+    --black: #293845;
+    --background: #E5E5E5;
+    --white: #FFFFFF;
+    --border: #D4D4D4;
+    --green: #247A6B;
+}
+
+:root { /*   seats   */
+    --avaliable-background: #C3CFD9;
+    --avaliable-border: #7B8B99;
+    --selected-background: #8DD7CF;
+    --selected-border: #1AAE9E;
+    --unavailable-background: #FBE192;
+    --unavailable-border: #F7C52B;
+}
+
+:root { /*  efects   */
+    --efect-orange: #f78f44;
+    --efect-white: #F0E9E9;
+    --efect-avaliable-background: #adb4bb;
+}
