@@ -1,6 +1,7 @@
 let image = "https://www.claquete.com/fotos/filmes/poster/12762_medio.jpg";
 let movieName = "Thor - Amor e Trovão";
 let session = "Quinta-feira - 15:00";
+let choiceMovie = false;
 
 function imageSelected() {
     return (
@@ -14,7 +15,7 @@ function infoMovie() {
     return (
         <div className="bottom-info">
             <p>{movieName}</p>
-            <p>{session}</p>
+            {choiceMovie ? <p>{session}</p> : ""}
         </div>
     )
 }
@@ -22,7 +23,16 @@ function infoMovie() {
 function Bottom() {
     return(
         <div className="bottom">
-            
+            {
+                // Adicionar um ternário aqui
+                // Se filme for selecionado (true), Adicionar imageSelected(), senão ""
+                // choiceMovie ? imageSelected : ""
+            }
+            {
+                // Adicionar um ternário aqui
+                // Se filme for selecionado (true), Adicionar infoMovie(), senão ""
+                // choiceMovie ? infoMovie : ""
+            }
         </div>
     )
 }

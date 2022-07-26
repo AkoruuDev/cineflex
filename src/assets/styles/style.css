@@ -24,6 +24,10 @@
     z-index: 1;
 }
 
+.main {
+    padding-top: 100px;
+}
+
 .bottom {
     width: 100vw;
     background-color: var(--gray);
