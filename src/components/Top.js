@@ -1,6 +1,8 @@
 function Top() {
     return(
-        <h1>This is the Top part page</h1>
+        <div className="top">
+            <h1>CINEFLEX</h1>
+        </div>
     )
 }
 
