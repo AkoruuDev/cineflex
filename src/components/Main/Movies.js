@@ -1,8 +1,9 @@
 function Movies() {
     return (
-        <p>
-            This is the Movies part main App
-        </p>
+        <div className="movies">
+            <h2 className="page-title">Selecione o filme</h2>
+            {`Lista de Filmes aqui`}
+        </div>
     )
 }
 
