@@ -6,7 +6,7 @@ let choiceMovie = false;
 function imageSelected() {
     return (
         <div className="bottom-image">
-            <img src={image} alt="image" />
+            <img src={image} alt="folder-Movie" />
         </div>
     )
 }
