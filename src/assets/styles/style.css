@@ -59,6 +59,7 @@ body {
     height: 219px;
     margin: 15px;
     background-color: var(--white);
+    border-radius: 5px;
 
     display: flex;
     align-items: center;

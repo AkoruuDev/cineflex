@@ -1,0 +1,4 @@
+.folder:hover {
+    cursor: pointer;
+    box-shadow: 0 4px 10px 4px gray;
+}
