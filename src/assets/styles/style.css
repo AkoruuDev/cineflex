@@ -9,6 +9,10 @@
     font-weight: 400;
 }
 
+body {
+    background-color: var(--background);
+}
+
 .top {
     width: 100vw;
     height: 67px;
@@ -39,6 +43,31 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.list-movies {
+    width: 90%;
+    
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.folder {
+    width: 155px;
+    height: 219px;
+    margin: 15px;
+    background-color: var(--white);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.folder img {
+    width: 139px;
+    height: 203px;
 }
 
 .bottom {

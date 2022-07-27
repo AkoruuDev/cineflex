@@ -23,9 +23,11 @@ function Movies() {
     return (
         <div className="movies">
             <h2 className="page-title">Selecione o filme</h2>
-            {movies.map(movie => (
-                <MovieTemplate folder={movie.posterURL} />
-            ))}
+            <div className="list-movies">
+                {movies.map(movie => (
+                    <MovieTemplate folder={movie.posterURL} />
+                ))}
+            </div>
         </div>
     )
 }
