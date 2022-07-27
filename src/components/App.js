@@ -17,13 +17,16 @@ let seats = {
   cpf: "",
 }
 
+let id = 1;
+let order = "";
+
 function pageOnSelected() {
   if (!movieSelected) {
-      pageOn = <Movies type = {type} />
+      pageOn = <Movies />
   } else if (!sessionSelected) {
-      pageOn = <Sessions type = {type} id = {id} />
+      pageOn = <Sessions id = {id} />
   } else if (!seatSelected) {
-      pageOn = <Seats type = {type} id = {id} />
+      pageOn = <Seats id = {id} />
   } else {
       pageOn = <Finishing order = {order}/>
   }

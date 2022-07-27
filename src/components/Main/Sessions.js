@@ -1,8 +1,9 @@
 import axios from "axios";
-import Get from "../common/Get";
 
-function Sessions({ type, id }) {
-    const promise = <Get page = {type} id = {id} />
+function Sessions({ id }) {
+    const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${id}/showtimes`);
+    promise.then(res => console.log(res.data));
+    
     return (
         <div className="sessions">
             <h2 className="page-title">Selecione o horário</h2>

@@ -1,8 +1,18 @@
 import axios from "axios";
-import Get from "../common/Get";
 
-function Seats({ type, id }) {
-    const promise = <Get page = {type} id = {id} />
+function saveRequest({ seats }) {
+    const promise = axios.post('https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many', seats);
+    promise.then(res => console.log(res.data));
+
+    return(
+        console.log("PRONTINHO")
+    )
+}
+
+function Seats({ id }) {
+    const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${id}/seats`);
+    promise.then(res => console.log(res.data));
+    
     return (
         <div className="seats">
             <h2 className="page-title">Selecione o(s) assento(s)</h2>
