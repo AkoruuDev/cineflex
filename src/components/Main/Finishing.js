@@ -1,8 +1,8 @@
-function Finishing() {
+function Finishing({ order }) {
     return (
         <div className="finishing">
             <h3>Pedido feito com sucesso!</h3>
-            {`Pedido do cliente aqui`}
+            {order}
             <div className="button">Voltar para Home</div>
         </div>
     )

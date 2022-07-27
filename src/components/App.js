@@ -11,27 +11,32 @@ let movieSelected = false;
 let sessionSelected = false;
 let seatSelected = false;
 let pageOn = <Movies />;
+let seats = {
+  ids: [],
+  name: "",
+  cpf: "",
+}
 
 function pageOnSelected() {
   if (!movieSelected) {
-      pageOn = <Movies />
+      pageOn = <Movies type = {type} />
   } else if (!sessionSelected) {
-      pageOn = <Sessions />
+      pageOn = <Sessions type = {type} id = {id} />
   } else if (!seatSelected) {
-      pageOn = <Seats />
+      pageOn = <Seats type = {type} id = {id} />
   } else {
-      pageOn = <Finishing />
+      pageOn = <Finishing order = {order}/>
   }
 }
 
 function App() {
-    return(
-        <>
-          <Top />
-          <Main  pageOn = {pageOn}/>
-          <Bottom />  
-        </>
-    )
+  return(
+      <>
+        <Top />
+        <Main  pageOn = {pageOn} />
+        <Bottom />  
+      </>
+  )
 }
 
 export default App;

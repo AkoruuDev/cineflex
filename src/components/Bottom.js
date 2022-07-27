@@ -1,6 +1,6 @@
-let image = "https://www.claquete.com/fotos/filmes/poster/12762_medio.jpg";
-let movieName = "Thor - Amor e Trovão";
-let session = "Quinta-feira - 15:00";
+let image = "https://www.claquete.com/fotos/filmes/poster/12762_medio.jpg"; // data.posterUrl
+let movieName = "Thor - Amor e Trovão"; // data.title
+let session = "Quinta-feira - 15:00"; // data.days[c].weekday - data.days[c].showtimes[i].name
 let choiceMovie = false;
 
 function imageSelected() {

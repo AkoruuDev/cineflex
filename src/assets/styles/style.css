@@ -29,6 +29,7 @@
     height: 100vh;
     padding-top: 100px;
     background-color: var(--background);
+    color: var(--black);
 
     display: flex;
     justify-content: center;
@@ -64,6 +65,7 @@
 .bottom-info {
     padding-left: 14px;
     font-size: 26px;
+    color: var(--black);
     display: flex;
     flex-direction: column;
 }

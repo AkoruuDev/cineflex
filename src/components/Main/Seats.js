@@ -1,4 +1,8 @@
-function Seats() {
+import axios from "axios";
+import Get from "../common/Get";
+
+function Seats({ type, id }) {
+    const promise = <Get page = {type} id = {id} />
     return (
         <div className="seats">
             <h2 className="page-title">Selecione o(s) assento(s)</h2>
