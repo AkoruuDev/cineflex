@@ -1,8 +1,8 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-function Session({ weekday, date, times }) {
+function Session({ weekday, date, times, sessionID }) {
     return(
         <div className="session-box">
             <div className="day">
@@ -10,7 +10,7 @@ function Session({ weekday, date, times }) {
             </div>
             <div className="time">
                 {times.map(res => (
-                    <span key={res.id}>{res.name}</span>
+                    <Link key={res.id} to={`/sessao/${sessionID}`}><span>{res.name}</span></Link>
                 ))}
             </div>
         </div>
@@ -35,7 +35,7 @@ function Sessions() {
             <h2 className="page-title">Selecione o horário</h2>
             <div className="sessions-time">
                 {sessions.map(session => (
-                    <Session key={session.id} weekday={session.weekday} date={session.date} times={session.showtimes} />
+                    <Session key={session.id} weekday={session.weekday} date={session.date} times={session.showtimes} sessionID={session.id} />
                 ))}
             </div>
         </div>

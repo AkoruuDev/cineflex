@@ -22,7 +22,6 @@ let order = "";
 let isSelected = false;
 
 function selectMovie() {
-  test.push({name: "oi"})
   console.log(test)
   isSelected = true;
   console.log(isSelected)

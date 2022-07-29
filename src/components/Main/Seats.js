@@ -9,8 +9,10 @@ function saveRequest({ seats }) {
     )
 }
 
+let idDaSess = 26102021;
+
 function Seats({ id, seats }) {
-    const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${id}/seats`);
+    const promise = axios.get(`https://mock-api.driven.com.br/api/v7/cineflex/showtimes/${idDaSess}/seats`);
     promise.then(res => console.log(res.data));
     
     return (
