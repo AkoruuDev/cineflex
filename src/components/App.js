@@ -1,3 +1,5 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Top from "./Top";
 import Main from "./Main";
 import Bottom from "./Bottom";
@@ -7,37 +9,33 @@ import Sessions from './Main/Sessions';
 import Seats from './Main/Seats';
 import Finishing from './Main/Finishing';
 
-let movieSelected = false;
-let sessionSelected = false;
-let seatSelected = false;
-let pageOn = <Movies />;
 let seats = {
   ids: [],
   name: "",
   cpf: "",
 }
 
-let id = 1;
+let movieID = 5;
+let sessionID = 240;
 let order = "";
 
-function pageOnSelected() {
-  if (!movieSelected) {
-      pageOn = <Movies />
-  } else if (!sessionSelected) {
-      pageOn = <Sessions id = {id} />
-  } else if (!seatSelected) {
-      pageOn = <Seats id = {id} />
-  } else {
-      pageOn = <Finishing order = {order}/>
-  }
-}
+function App(selectMovie) {
 
-function App() {
+
   return(
       <>
-        <Top />
-        <Main  pageOn = {pageOn} />
-        <Bottom />  
+        <BrowserRouter>
+          <Top />
+          <Main>
+              <Routes>
+                <Route path="/" element={<Movies />} />
+                <Route path="/filme/:movieID" element={<Sessions movieID={movieID} />} />
+                <Route path="/sessao/:sessionID" element={<Seats sessionID={sessionID} />} />
+                <Route path="/sucesso" element={<Finishing order={order} />} />
+              </Routes>
+          </Main>
+          <Bottom />
+        </BrowserRouter>
       </>
   )
 }

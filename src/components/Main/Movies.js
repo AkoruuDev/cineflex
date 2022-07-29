@@ -1,11 +1,14 @@
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-function MovieTemplate({ folder }) {
+function MovieTemplate({ folder, selectMovie, movieID }) {
     return (
-        <div className="folder">
-            <img src={folder} alt="folder-img" />
-        </div>
+        <Link to={`/filme/${movieID}`}>
+            <div className="folder" onClick={ selectMovie }>
+                <img src={folder} alt="folder-img" />
+            </div>
+        </Link>
     )
 }
 
@@ -25,7 +28,7 @@ function Movies() {
             <h2 className="page-title">Selecione o filme</h2>
             <div className="list-movies">
                 {movies.map(movie => (
-                    <MovieTemplate folder={movie.posterURL} />
+                    <MovieTemplate key={movie.id} folder={movie.posterURL} movieID={movie.id}/>
                 ))}
             </div>
         </div>

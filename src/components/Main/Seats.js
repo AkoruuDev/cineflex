@@ -9,7 +9,7 @@ function saveRequest({ seats }) {
     )
 }
 
-function Seats({ id }) {
+function Seats({ id, seats }) {
     const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${id}/seats`);
     promise.then(res => console.log(res.data));
     

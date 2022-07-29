@@ -54,6 +54,19 @@ body {
     justify-content: space-around;
 }
 
+.sessions {
+    width: 90%;
+    margin-bottom: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sessions-time {
+    width: 100%;
+    overflow-x: auto;
+}
+
 .folder {
     width: 155px;
     height: 219px;
@@ -69,6 +82,31 @@ body {
 .folder img {
     width: 139px;
     height: 203px;
+}
+
+.session-box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.time {
+    width: 100%;
+    margin: 23px 0;
+    display: flex;
+    font-size: 20px;
+}
+
+.time span{
+    width: 82px;
+    height: 43px;
+    margin: 8px 8px 8px 0;
+    background-color: var(--orange);
+    color: var(--white);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .bottom {

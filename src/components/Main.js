@@ -1,7 +1,7 @@
-function Main({ pageOn }) {
+function Main({ children }) {
     return(
         <div className='main'>
-            {pageOn}
+           {children} 
         </div>
     )
 }
