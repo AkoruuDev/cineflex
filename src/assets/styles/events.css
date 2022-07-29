@@ -3,7 +3,7 @@
     box-shadow: 0 4px 10px 4px gray;
 }
 
-.time span:hover {
+.button:hover {
     cursor: pointer;
     box-shadow: 0 1px 8px 1px gray;
 }

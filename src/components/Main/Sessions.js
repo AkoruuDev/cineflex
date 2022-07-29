@@ -10,7 +10,7 @@ function Session({ weekday, date, times, sessionID }) {
             </div>
             <div className="time">
                 {times.map(res => (
-                    <Link key={res.id} to={`/sessao/${sessionID}`}><span>{res.name}</span></Link>
+                    <Link key={res.id} to={`/sessao/${sessionID}`}><span className="button">{res.name}</span></Link>
                 ))}
             </div>
         </div>
