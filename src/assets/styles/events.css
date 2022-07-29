@@ -2,3 +2,8 @@
     cursor: pointer;
     box-shadow: 0 4px 10px 4px gray;
 }
+
+.time span:hover {
+    cursor: pointer;
+    box-shadow: 0 1px 10px 1px gray;
+}
