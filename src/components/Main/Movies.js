@@ -12,7 +12,7 @@ function MovieTemplate({ folder, selectMovie, movieID }) {
     )
 }
 
-function Movies() {
+function Movies({ selectMovie }) {
     const [movies, setMovies] = useState([]);
 
     useEffect(() => {
@@ -28,7 +28,7 @@ function Movies() {
             <h2 className="page-title">Selecione o filme</h2>
             <div className="list-movies">
                 {movies.map(movie => (
-                    <MovieTemplate key={movie.id} folder={movie.posterURL} movieID={movie.id}/>
+                    <MovieTemplate key={movie.id} folder={movie.posterURL} movieID={movie.id} selectMovie={selectMovie} />
                 ))}
             </div>
         </div>

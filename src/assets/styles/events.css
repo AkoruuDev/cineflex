@@ -5,5 +5,5 @@
 
 .time span:hover {
     cursor: pointer;
-    box-shadow: 0 1px 10px 1px gray;
+    box-shadow: 0 1px 8px 1px gray;
 }
