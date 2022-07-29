@@ -125,6 +125,27 @@ body {
     font-style: italic;
 }
 
+.seats-content {
+    width: 80%;
+    margin: 30px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.seats-choice {
+    width: 26px;
+    height: 26px;
+    margin: 5px;
+    border-radius: 50%;
+    background-color: var(--gray);
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .bottom {
     width: 100vw;
     background-color: var(--gray);
