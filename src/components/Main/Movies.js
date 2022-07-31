@@ -19,7 +19,6 @@ function Movies({ selectMovie }) {
         const promise = axios.get("https://mock-api.driven.com.br/api/v5/cineflex/movies");
         promise.then(res => {
             setMovies(res.data);
-            console.log(res.data);
         });
     }, []);
 

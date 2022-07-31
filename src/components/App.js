@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState } from "react";
 
 import Top from "./Top";
 import Main from "./Main";
@@ -15,9 +16,12 @@ let seats = {
   cpf: "",
 }
 
-let theOrder;
-
 function App() {
+  const [order, setOrder] = useState({});
+  const [seatChoiced, setSeatChoiced] = useState(false);
+
+  console.log(order);
+
   return(
       <>
         <BrowserRouter>
@@ -25,12 +29,12 @@ function App() {
           <Main>
               <Routes>
                 <Route path="/" element={<Movies />} />
-                <Route path="/filme/:movieID" element={<Sessions />} />
-                <Route path="/sessao/:sessionID" element={<Seats theOrder={theOrder} />} />
-                <Route path="/sucesso" element={<Finishing order={theOrder} />} />
+                <Route path="/filme/:movieID" element={<Sessions order={order} setOrder={setOrder} />} />
+                <Route path="/sessao/:sessionID" element={<Seats order={order} setOrder={setOrder} setSeatChoiced={setSeatChoiced} />} />
+                <Route path="/sucesso" element={<Finishing order={order} />} />
               </Routes>
           </Main>
-          <Bottom />
+          <Bottom order={order} seatChoiced={seatChoiced} />
         </BrowserRouter>
       </>
   )

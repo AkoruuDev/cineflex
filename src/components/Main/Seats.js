@@ -30,7 +30,11 @@ function Seat({ number }) {
     )
 }
 
-function Seats({theOrder}) {
+function Seats({
+    order,
+    setOrder,
+    setSeatChoiced
+}) {
     const [seats, setSeats] = useState([]);
     const [nameBuyer, setNameBuyer] = useState()
     const [cpfBuyer, setCPFBuyer] = useState()
@@ -41,19 +45,27 @@ function Seats({theOrder}) {
         const promise = axios.get(`https://mock-api.driven.com.br/api/v7/cineflex/showtimes/${sessionID}/seats`);
         promise.then(res => {
             setSeats(res.data.seats)
-            response = res.data
-            console.log(response)
-            getOrder();
+            response = res.data;
+            // getOrder();
+            updateOrder(response);
         });
     }, [])
+
+    function updateOrder(response) {
+        setOrder({... order,
+            dayWeekday: response.day.weekday,
+            dayHour: response.name
+        })
+
+        setSeatChoiced(true)
+    }
 
     function finishingOrder() {
         order = {...order,
             nameBuyer: nameBuyer,
             cpfBuyer: cpfBuyer
         }
-
-        theOrder = order    
+ 
         // saveRequest(order);
     
         console.log(order)

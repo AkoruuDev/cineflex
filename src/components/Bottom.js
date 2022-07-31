@@ -1,34 +1,37 @@
-let image = "https://www.claquete.com/fotos/filmes/poster/12762_medio.jpg"; // data.posterUrl
-let movieName = "Thor - Amor e Trovão"; // data.title
-let session = "Quinta-feira - 15:00"; // data.days[c].weekday - data.days[c].showtimes[i].name
-let choiceMovie = false;
-
-function imageSelected() {
+function imageSelected(order) {
     return (
         <div className="bottom-image">
-            <img src={image} alt="folder-Movie" />
+            <img src={order.posterUrl} alt="folder-Movie" />
         </div>
     )
 }
 
-function infoMovie() {
+function infoMovie(order, seatChoiced) {
     return (
         <div className="bottom-info">
-            <p>{movieName}</p>
-            {choiceMovie ? <p>{session}</p> : ""}
+            <p>{order.movieName}</p>
+            {seatChoiced ? <p>{`${order.dayWeekday} - ${order.dayHour}`}</p> : ""}
         </div>
     )
 }
 
-function Bottom() {
+function thereIsOrder(order) {
+    if (Object.keys(order).length !== 0) {
+        return true;
+    }
+
+    return false
+}
+
+function Bottom({ order, seatChoiced }) {
     return(
         <div className="bottom">
-            {
+            { thereIsOrder(order) ? imageSelected(order) : ""
                 // Adicionar um ternário aqui
                 // Se filme for selecionado (true), Adicionar imageSelected(), senão ""
                 // choiceMovie ? imageSelected : ""
             }
-            {
+            { thereIsOrder(order) ? infoMovie(order, seatChoiced) : ""
                 // Adicionar um ternário aqui
                 // Se filme for selecionado (true), Adicionar infoMovie(), senão ""
                 // choiceMovie ? infoMovie : ""
