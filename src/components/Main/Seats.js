@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 function saveRequest(order) {
-    const promise = axios.post('https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many', order);
+    const promise = axios.post('https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many', order);
     promise.then(res => console.log(res.data));
 
     return(

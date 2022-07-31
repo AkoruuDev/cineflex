@@ -29,7 +29,7 @@ function Sessions({
     const {movieID} = useParams();
 
     useEffect(() => {
-        const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${movieID}/showtimes`);
+        const promise = axios.get(`https://mock-api.driven.com.br/api/v7/cineflex/movies/${movieID}/showtimes`);
         promise.then(res => {
             setSessions(res.data.days)
             response = res.data;
