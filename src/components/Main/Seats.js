@@ -66,6 +66,20 @@ function Seats({
                 <Seat key={index} number={seat.name} />
             ))}
             </div>
+            <div>
+                <div>
+                    <span className={`seats-choice`}></span>
+                    <h3>Selecionado</h3>
+                </div>
+                <div>
+                    <span className={`seats-choice`}></span>
+                    <h3>Disponível</h3>
+                </div>
+                <div>
+                    <span className={`seats-choice`}></span>
+                    <h3>Indisponível</h3>
+                </div>
+            </div>
             <div className="ending">
                 <h3>Nome do comprador:</h3>
                 <input type="text" name="buyer-name" placeholder="Digite seu nome..." className="input-text" value={nameBuyer} onChange={e => setNameBuyer(e.target.value)} />
