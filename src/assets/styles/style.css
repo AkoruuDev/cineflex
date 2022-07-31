@@ -148,6 +148,32 @@ body {
     justify-content: center;
 }
 
+.finishing {
+    width: 100%;
+}
+
+.finish-title {
+    margin-bottom: 40px;
+    font-weight: 700;
+    font-size: 24px;
+    color: var(--green);
+}
+
+.finish-box {
+    width: 90%;
+    color: var(--black);
+}
+
+.finish-subtitle {
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.finish-box p {
+    font-size: 22px;
+}
+
 .bottom {
     width: 100vw;
     background-color: var(--gray);
