@@ -11,3 +11,8 @@
 .input-text:hover, .input-text:focus {
     background-color: var(--efect-white);
 }
+
+.seats-choice:hover {
+    cursor: pointer;
+    background-color: var(--efect-avaliable-background);
+}

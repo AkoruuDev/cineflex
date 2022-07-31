@@ -66,7 +66,7 @@ function Seats({
                 <Seat key={index} number={seat.name} />
             ))}
             </div>
-            <div>
+            <div className="color-seats-menu">
                 <div>
                     <span className={`seats-choice`}></span>
                     <h3>Selecionado</h3>
