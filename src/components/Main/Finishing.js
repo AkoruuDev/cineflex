@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Finishing({ order }) {
     return (
         <div className="finishing">
@@ -12,7 +14,7 @@ function Finishing({ order }) {
                 <p>{order.nameBuyer}</p>
                 <p>{order.cpfBuyer}</p>
             </div>
-            <div className="button">Voltar para Home</div>
+            <Link to="/"><div className="button">Voltar para Home</div></Link>
         </div>
     )
 }

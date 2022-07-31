@@ -12,7 +12,9 @@ function MovieTemplate({ folder, selectMovie, movieID }) {
     )
 }
 
-function Movies({ selectMovie }) {
+function Movies({ selectMovie, reload, order }) {
+    reload(order);
+
     const [movies, setMovies] = useState([]);
 
     useEffect(() => {

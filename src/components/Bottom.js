@@ -26,16 +26,8 @@ function thereIsOrder(order) {
 function Bottom({ order, seatChoiced }) {
     return(
         <div className="bottom">
-            { thereIsOrder(order) ? imageSelected(order) : ""
-                // Adicionar um ternário aqui
-                // Se filme for selecionado (true), Adicionar imageSelected(), senão ""
-                // choiceMovie ? imageSelected : ""
-            }
-            { thereIsOrder(order) ? infoMovie(order, seatChoiced) : ""
-                // Adicionar um ternário aqui
-                // Se filme for selecionado (true), Adicionar infoMovie(), senão ""
-                // choiceMovie ? infoMovie : ""
-            }
+            { thereIsOrder(order) ? imageSelected(order) : "" }
+            { thereIsOrder(order) ? infoMovie(order, seatChoiced) : "" }
         </div>
     )
 }

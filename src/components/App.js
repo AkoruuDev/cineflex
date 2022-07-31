@@ -16,6 +16,12 @@ let seats = {
   cpf: "",
 }
 
+function reload(order) {
+  if (Object.keys(order).length !== 0) {
+    window.location.reload()
+  }
+}
+
 function App() {
   const [order, setOrder] = useState({});
   const [seatChoiced, setSeatChoiced] = useState(false);
@@ -28,7 +34,7 @@ function App() {
           <Top />
           <Main>
               <Routes>
-                <Route path="/" element={<Movies />} />
+                <Route path="/" element={<Movies reload={reload} order={order} />} />
                 <Route path="/filme/:movieID" element={<Sessions order={order} setOrder={setOrder} />} />
                 <Route path="/sessao/:sessionID" element={<Seats order={order} setOrder={setOrder} setSeatChoiced={setSeatChoiced} />} />
                 <Route path="/sucesso" element={<Finishing order={order} />} />
