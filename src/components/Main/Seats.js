@@ -41,6 +41,7 @@ function Seats({
 
     function updateOrder(response) {
         setOrder({...order,
+            dayDate: response.day.date,
             dayWeekday: response.day.weekday,
             dayHour: response.name
         });
