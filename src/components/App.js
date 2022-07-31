@@ -14,18 +14,6 @@ let seats = {
   name: "",
   cpf: "",
 }
-const test = {};
-
-let movieID = 5;
-let sessionID = 240;
-let order = "";
-let isSelected = false;
-
-function selectMovie() {
-  console.log(test)
-  isSelected = true;
-  console.log(isSelected)
-}
 
 function App() {
   return(
@@ -34,13 +22,13 @@ function App() {
           <Top />
           <Main>
               <Routes>
-                <Route path="/" element={<Movies selectMovie={selectMovie} />} />
-                <Route path="/filme/:movieID" element={<Sessions movieID={movieID} />} />
-                <Route path="/sessao/:sessionID" element={<Seats sessionID={sessionID} />} />
-                <Route path="/sucesso" element={<Finishing order={order} />} />
+                <Route path="/" element={<Movies />} />
+                <Route path="/filme/:movieID" element={<Sessions />} />
+                <Route path="/sessao/:sessionID" element={<Seats />} />
+                <Route path="/sucesso" element={<Finishing />} />
               </Routes>
           </Main>
-          <Bottom isSelected={isSelected} />
+          <Bottom />
         </BrowserRouter>
       </>
   )

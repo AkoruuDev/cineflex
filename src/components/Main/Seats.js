@@ -2,8 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-function saveRequest({ seats }) {
-    const promise = axios.post('https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many', seats);
+function saveRequest(order) {
+    const promise = axios.post('https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many', order);
     promise.then(res => console.log(res.data));
 
     return(
@@ -11,7 +11,18 @@ function saveRequest({ seats }) {
     )
 }
 
-let idDaSess = 1;
+let response = {};
+let order;
+
+function getOrder() {
+    order = {...order,
+        movieName: response.movie.title,
+        dateTime: response.day.date,
+        time: response.name
+    }
+
+    console.log(order)
+}
 
 function Seat({ number }) {
     return(
@@ -19,8 +30,10 @@ function Seat({ number }) {
     )
 }
 
-function Seats({ id }) {
+function Seats() {
     const [seats, setSeats] = useState([]);
+    const [nameBuyer, setNameBuyer] = useState()
+    const [cpfBuyer, setCPFBuyer] = useState()
 
     const { sessionID } = useParams()
 
@@ -28,8 +41,22 @@ function Seats({ id }) {
         const promise = axios.get(`https://mock-api.driven.com.br/api/v7/cineflex/showtimes/${sessionID}/seats`);
         promise.then(res => {
             setSeats(res.data.seats)
+            response = res.data
+            console.log(response)
+            getOrder();
         });
     }, [])
+
+    function finishingOrder() {
+        order = {...order,
+            nameBuyer: nameBuyer,
+            cpfBuyer: cpfBuyer
+        }
+    
+        // saveRequest(order);
+    
+        console.log(order)
+    }
     
     return (
         <div className="seats">
@@ -41,11 +68,11 @@ function Seats({ id }) {
             </div>
             <div className="ending">
                 <h3>Nome do comprador:</h3>
-                <input type="text" name="buyer-name" placeholder="Digite seu nome..." className="input-text" />
+                <input type="text" name="buyer-name" placeholder="Digite seu nome..." className="input-text" value={nameBuyer} onChange={e => setNameBuyer(e.target.value)} />
                 <h3>CPF do comprador:</h3>
-                <input type="text" name="buyer-cpf" placeholder="Digite seu CPF..." className="input-text" />
+                <input type="text" name="buyer-cpf" placeholder="Apenas números..." className="input-text" value={cpfBuyer} onChange={e => setCPFBuyer(e.target.value)} />
             </div>
-            <div className="button">Reservar assento(s)</div>
+            <div className="button" onClick={finishingOrder}>Reservar assento(s)</div>
         </div>
     )
 }
