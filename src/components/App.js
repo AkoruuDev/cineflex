@@ -15,6 +15,8 @@ let seats = {
   cpf: "",
 }
 
+let theOrder;
+
 function App() {
   return(
       <>
@@ -24,8 +26,8 @@ function App() {
               <Routes>
                 <Route path="/" element={<Movies />} />
                 <Route path="/filme/:movieID" element={<Sessions />} />
-                <Route path="/sessao/:sessionID" element={<Seats />} />
-                <Route path="/sucesso" element={<Finishing />} />
+                <Route path="/sessao/:sessionID" element={<Seats theOrder={theOrder} />} />
+                <Route path="/sucesso" element={<Finishing order={theOrder} />} />
               </Routes>
           </Main>
           <Bottom />

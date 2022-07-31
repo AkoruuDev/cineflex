@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 function saveRequest(order) {
     const promise = axios.post('https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many', order);
@@ -30,7 +30,7 @@ function Seat({ number }) {
     )
 }
 
-function Seats() {
+function Seats({theOrder}) {
     const [seats, setSeats] = useState([]);
     const [nameBuyer, setNameBuyer] = useState()
     const [cpfBuyer, setCPFBuyer] = useState()
@@ -52,7 +52,8 @@ function Seats() {
             nameBuyer: nameBuyer,
             cpfBuyer: cpfBuyer
         }
-    
+
+        theOrder = order    
         // saveRequest(order);
     
         console.log(order)
@@ -72,7 +73,7 @@ function Seats() {
                 <h3>CPF do comprador:</h3>
                 <input type="text" name="buyer-cpf" placeholder="Apenas números..." className="input-text" value={cpfBuyer} onChange={e => setCPFBuyer(e.target.value)} />
             </div>
-            <div className="button" onClick={finishingOrder}>Reservar assento(s)</div>
+            <Link to="/sucesso"><div className="button" onClick={finishingOrder}>Reservar assento(s)</div></Link>
         </div>
     )
 }
