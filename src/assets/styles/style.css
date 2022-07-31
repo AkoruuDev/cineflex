@@ -64,6 +64,7 @@ body {
 
 .sessions-time {
     width: 100%;
+    padding-left: 15px;
     overflow-x: auto;
 }
 
@@ -123,6 +124,7 @@ body {
     font-size: 18px;
     font-family: 'Roboto', sans-serif;
     font-style: italic;
+    color: var(--black);
 }
 
 .seats-content {
