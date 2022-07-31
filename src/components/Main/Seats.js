@@ -12,17 +12,6 @@ function saveRequest(order) {
 }
 
 let response = {};
-let order;
-
-function getOrder() {
-    order = {...order,
-        movieName: response.movie.title,
-        dateTime: response.day.date,
-        time: response.name
-    }
-
-    console.log(order)
-}
 
 function Seat({ number }) {
     return(
@@ -46,29 +35,26 @@ function Seats({
         promise.then(res => {
             setSeats(res.data.seats)
             response = res.data;
-            // getOrder();
             updateOrder(response);
         });
     }, [])
 
     function updateOrder(response) {
-        setOrder({... order,
+        setOrder({...order,
             dayWeekday: response.day.weekday,
             dayHour: response.name
-        })
+        });
 
         setSeatChoiced(true)
     }
 
     function finishingOrder() {
-        order = {...order,
+        setOrder({...order,
             nameBuyer: nameBuyer,
             cpfBuyer: cpfBuyer
-        }
+        });
  
         // saveRequest(order);
-    
-        console.log(order)
     }
     
     return (

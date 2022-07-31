@@ -38,7 +38,7 @@ function Sessions({
     }, [])
     
     function updateOrder(response) {
-        setOrder({... order,
+        setOrder({...order,
             movieName: response.title,
             posterUrl: response.posterURL
         })
