@@ -5,14 +5,14 @@ import axios from "axios";
 function MovieTemplate({ folder, selectMovie, movieID }) {
     return (
         <Link to={`/filme/${movieID}`}>
-            <div className="folder" onClick={ selectMovie }>
+            <div className="folder">
                 <img src={folder} alt="folder-img" />
             </div>
         </Link>
     )
 }
 
-function Movies({ selectMovie, reload, order }) {
+function Movies({ reload, order }) {
     reload(order);
 
     const [movies, setMovies] = useState([]);
@@ -29,7 +29,7 @@ function Movies({ selectMovie, reload, order }) {
             <h2 className="page-title">Selecione o filme</h2>
             <div className="list-movies">
                 {movies.map(movie => (
-                    <MovieTemplate key={movie.id} folder={movie.posterURL} movieID={movie.id} selectMovie={selectMovie} />
+                    <MovieTemplate key={movie.id} folder={movie.posterURL} movieID={movie.id} />
                 ))}
             </div>
         </div>

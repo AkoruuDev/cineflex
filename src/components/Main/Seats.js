@@ -12,12 +12,8 @@ function saveRequest(order) {
 }
 
 let response = {};
-
-function Seat({ number }) {
-    return(
-        <span className="seats-choice">{number}</span>
-    )
-}
+let select = false;
+let selecting = {};
 
 function Seats({
     order,
@@ -28,16 +24,24 @@ function Seats({
     const [nameBuyer, setNameBuyer] = useState()
     const [cpfBuyer, setCPFBuyer] = useState()
 
+    console.log(seats)
+
     const { sessionID } = useParams()
 
     useEffect(() => {
         const promise = axios.get(`https://mock-api.driven.com.br/api/v7/cineflex/showtimes/${sessionID}/seats`);
         promise.then(res => {
-            setSeats(res.data.seats)
+            setSeats(res.data.seats);
             response = res.data;
+            selecting = res.data.seats;
             updateOrder(response);
+            addSelect();
         });
     }, [])
+
+    for (let i = 0; i < Object.keys(selecting).length; i++) {
+        selecting[i] = {...selecting[i], isSelected: false}
+    }
 
     function updateOrder(response) {
         setOrder({...order,
@@ -49,6 +53,10 @@ function Seats({
         setSeatChoiced(true)
     }
 
+    function addSelect() {
+        setSeats(selecting);
+    }
+
     function finishingOrder() {
         setOrder({...order,
             nameBuyer: nameBuyer,
@@ -57,18 +65,34 @@ function Seats({
  
         // saveRequest(order);
     }
+
+    function selectThis(element) {
+        console.log(element)
+        console.log("foi")
+    }
+
+    function Seat({ number, isAvailable, isSelect }) {
+        return(
+            <span
+            className={`seats-choice ${isAvailable ? "unvailable" : "available"} 
+            ${isSelect ? "selected": ""}`}
+            onClick={() => ""}>
+                {number}
+            </span>
+        )
+    }
     
     return (
         <div className="seats">
             <h2 className="page-title">Selecione o(s) assento(s)</h2>
             <div className="seats-content">
             {seats.map((seat, index) => (
-                <Seat key={index} number={seat.name} />
+                <Seat key={index} number={seat.name} isAvailable={seat.isAvailable} isSelect={seat.isSelected} />
             ))}
             </div>
             <div className="color-seats-menu">
                 <div>
-                    <span className={`seats-choice`}></span>
+                    <span className={`seats-choice selected`}></span>
                     <h3>Selecionado</h3>
                 </div>
                 <div>
@@ -76,7 +100,7 @@ function Seats({
                     <h3>Disponível</h3>
                 </div>
                 <div>
-                    <span className={`seats-choice`}></span>
+                    <span className={`seats-choice unvailable`}></span>
                     <h3>Indisponível</h3>
                 </div>
             </div>

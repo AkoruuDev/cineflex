@@ -12,7 +12,11 @@
     background-color: var(--efect-white);
 }
 
-.seats-choice:hover {
+.available:hover {
     cursor: pointer;
-    background-color: var(--efect-avaliable-background);
+    background-color: var(--efect-available-background);
+}
+
+.available:focus {
+    background-color: var(--selected-background);
 }

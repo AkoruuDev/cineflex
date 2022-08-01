@@ -148,7 +148,22 @@ body {
     justify-content: center;
 }
 
+.available {
+    background-color: var(--available-background);
+    border-color: var(--available-border);
+}
+
+.unvailable {
+    background-color: var(--unavailable-background);
+    border-color: var(--unavailable-border);
+}
+
+.selected {
+    background-color: var(--selected-background);
+}
+
 .color-seats-menu {
+    margin: 20px 0 80px 0   ;
     width: 70%;
     display: flex;
     align-items: center;
@@ -160,6 +175,10 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.seats .button {
+    margin-bottom: 200px;
 }
 
 .finishing {

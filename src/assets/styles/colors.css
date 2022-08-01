@@ -9,8 +9,8 @@
 }
 
 :root { /*   seats   */
-    --avaliable-background: #C3CFD9;
-    --avaliable-border: #7B8B99;
+    --available-background: #C3CFD9;
+    --available-border: #7B8B99;
     --selected-background: #8DD7CF;
     --selected-border: #1AAE9E;
     --unavailable-background: #FBE192;
@@ -20,5 +20,5 @@
 :root { /*  efects   */
     --efect-orange: #f78f44;
     --efect-white: #F0E9E9;
-    --efect-avaliable-background: #adb4bb;
+    --efect-available-background: #adb4bb;
 }
