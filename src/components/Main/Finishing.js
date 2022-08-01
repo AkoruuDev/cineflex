@@ -11,8 +11,8 @@ function Finishing({ order }) {
                 <p>{order.dayDate} {order.dayHour}</p>
                 <h2 className="finish-subtitle">Ingressos</h2>
                 <h2 className="finish-subtitle">Comprador</h2>
-                <p>{order.nameBuyer}</p>
-                <p>{order.cpfBuyer}</p>
+                <p>{`Nome: ${order.nameBuyer}`}</p>
+                <p>{`CPF: ${order.cpfBuyer[0]}${order.cpfBuyer[1]}${order.cpfBuyer[2]}.${order.cpfBuyer[3]}${order.cpfBuyer[4]}${order.cpfBuyer[5]}.${order.cpfBuyer[6]}${order.cpfBuyer[7]}${order.cpfBuyer[8]}-${order.cpfBuyer[9]}${order.cpfBuyer[10]}`}</p>
             </div>
             <Link to="/"><div className="button">Voltar para Home</div></Link>
         </div>
