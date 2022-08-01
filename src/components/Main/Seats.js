@@ -21,10 +21,8 @@ function Seats({
     setSeatChoiced
 }) {
     const [seats, setSeats] = useState([]);
-    const [nameBuyer, setNameBuyer] = useState()
-    const [cpfBuyer, setCPFBuyer] = useState()
-
-    console.log(seats)
+    const [nameBuyer, setNameBuyer] = useState();
+    const [cpfBuyer, setCPFBuyer] = useState();
 
     const { sessionID } = useParams()
 

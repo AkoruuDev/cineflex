@@ -4,7 +4,6 @@ function Finishing({ order }) {
     return (
         <div className="finishing">
             <h3 className="finish-title">Pedido feito com sucesso!</h3>
-            {console.log(order)}
             <div className="finish-box">
                 <h2 className="finish-subtitle">Filme e Sessão</h2>
                 <p>{order.movieName}</p>

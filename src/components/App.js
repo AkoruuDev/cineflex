@@ -26,8 +26,6 @@ function App() {
   const [order, setOrder] = useState({});
   const [seatChoiced, setSeatChoiced] = useState(false);
 
-  console.log(order);
-
   return(
       <>
         <BrowserRouter>
