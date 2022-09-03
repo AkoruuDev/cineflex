@@ -17,6 +17,6 @@
     background-color: var(--efect-available-background);
 }
 
-.available:focus {
+.selected:hover {
     background-color: var(--selected-background);
 }

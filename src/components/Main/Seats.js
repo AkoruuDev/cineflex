@@ -15,6 +15,19 @@ let response = {};
 let select = false;
 let selecting = {};
 
+function Seat({ number, isAvailable, isSelect }) {
+    const [getSeat, setGetSeat] = useState(isSelect);
+
+    return(
+        <span
+        className={`seats-choice ${isAvailable ? "available" : "unvailable"} 
+        ${isAvailable ? getSeat ? "selected": "" : ""}`}
+        onClick={() => setGetSeat(!getSeat)}>
+            {number}
+        </span>
+    )
+}
+
 function Seats({
     order,
     setOrder,
@@ -69,17 +82,7 @@ function Seats({
         console.log("foi")
     }
 
-    function Seat({ number, isAvailable, isSelect }) {
-        return(
-            <span
-            className={`seats-choice ${isAvailable ? "unvailable" : "available"} 
-            ${isSelect ? "selected": ""}`}
-            onClick={() => ""}>
-                {number}
-            </span>
-        )
-    }
-    
+    console.log(seats)
     return (
         <div className="seats">
             <h2 className="page-title">Selecione o(s) assento(s)</h2>
