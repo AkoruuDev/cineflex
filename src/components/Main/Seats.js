@@ -2,21 +2,11 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-function saveRequest(order) {
-    const promise = axios.post('https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many', order);
-    promise.then(res => console.log(res.data));
-
-    return(
-        console.log("PRONTINHO")
-    )
-}
-
 let response = {};
 let selecting = {};
 
 function Seat({ number, isAvailable, seatID, selected, addSelect }) {
     const [getSeat, setGetSeat] = useState(false);
-    const [isSelected, setIsSelected] = useState(selected)
 
     return(
         <span
@@ -94,7 +84,6 @@ function Seats({
             });
             console.log(order);
             navigate("/sucesso");
-            // saveRequest(order);
         } else {
             console.log("Coloca um alerta ae, mano!")
         }

@@ -1,7 +1,25 @@
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 function Finishing({ order }) {
     console.log(order)
+    
+    const id = [];
+    console.log(order.mySeats)
+    console.log(order)
+    for (let i = 0; order.mySeats.length > i; i++) {
+        id.push(order.mySeats[i].id)
+    }
+    const reservation = {
+        ids: id,
+        name: order.nameBuyer,
+        cpf: order.cpfBuyer
+    }
+
+    console.log(reservation)
+    // const promise = axios.post('https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many', reservation);
+    // promise.then(res => console.log(res.data));
+
     return (
         <div className="finishing">
             <h3 className="finish-title">Pedido feito com sucesso!</h3>
