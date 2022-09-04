@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function saveRequest(order) {
     const promise = axios.post('https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many', order);
@@ -12,17 +12,20 @@ function saveRequest(order) {
 }
 
 let response = {};
-let select = false;
 let selecting = {};
 
-function Seat({ number, isAvailable, isSelect }) {
-    const [getSeat, setGetSeat] = useState(isSelect);
+function Seat({ number, isAvailable, seatID, selected, addSelect }) {
+    const [getSeat, setGetSeat] = useState(false);
+    const [isSelected, setIsSelected] = useState(selected)
 
     return(
         <span
         className={`seats-choice ${isAvailable ? "available" : "unvailable"} 
         ${isAvailable ? getSeat ? "selected": "" : ""}`}
-        onClick={() => setGetSeat(!getSeat)}>
+        onClick={() => {
+            setGetSeat(!getSeat);
+            addSelect(seatID, selected)            
+        }}>
             {number}
         </span>
     )
@@ -34,61 +37,80 @@ function Seats({
     setSeatChoiced
 }) {
     const [seats, setSeats] = useState([]);
-    const [nameBuyer, setNameBuyer] = useState();
-    const [cpfBuyer, setCPFBuyer] = useState();
+    const [nameBuyer, setNameBuyer] = useState("");
+    const [cpfBuyer, setCPFBuyer] = useState("");
+    const navigate = useNavigate();
 
-    const { sessionID } = useParams()
+    const { sessionID } = useParams();
 
     useEffect(() => {
         const promise = axios.get(`https://mock-api.driven.com.br/api/v7/cineflex/showtimes/${sessionID}/seats`);
         promise.then(res => {
             setSeats(res.data.seats);
-            response = res.data;
+            updateOrder(res);
             selecting = res.data.seats;
-            updateOrder(response);
-            addSelect();
+            setSeats(selecting);
         });
     }, [])
 
     for (let i = 0; i < Object.keys(selecting).length; i++) {
-        selecting[i] = {...selecting[i], isSelected: false}
+        selecting[i] = {...selecting[i], selected: false}
     }
 
-    function updateOrder(response) {
+    function updateOrder(res) {
         setOrder({...order,
-            dayDate: response.day.date,
-            dayWeekday: response.day.weekday,
-            dayHour: response.name
+            dayDate: res.data.day.date,
+            dayWeekday: res.data.day.weekday,
+            dayHour: res.data.name
         });
 
         setSeatChoiced(true)
     }
 
-    function addSelect() {
-        setSeats(selecting);
+    function addSelect(seatID, selected) {
+        console.log(seats)
+        const selectSeats = seats.map(seat => {
+            if((seat.id === seatID) && (seat.isAvailable === true)) {
+                return {
+                    ...seat,
+                    selected: !selected
+                }
+            }
+            return { ...seat }
+        })
+        setSeats([ ...selectSeats ])
+        console.log(seats)
     }
 
     function finishingOrder() {
-        setOrder({...order,
-            nameBuyer: nameBuyer,
-            cpfBuyer: cpfBuyer
-        });
- 
-        // saveRequest(order);
+        const mySeats = seats.filter(seat => seat.selected === true);
+        console.log(mySeats);
+        console.log(mySeats.length)
+        if( cpfBuyer !== "" && nameBuyer !== ""  && mySeats.length !== 0) {
+            setOrder({...order,
+                nameBuyer: nameBuyer,
+                cpfBuyer: cpfBuyer,
+                mySeats: mySeats
+            });
+            console.log(order);
+            navigate("/sucesso");
+            // saveRequest(order);
+        } else {
+            console.log("Coloca um alerta ae, mano!")
+        }
     }
 
     function selectThis(element) {
         console.log(element)
         console.log("foi")
     }
-
-    console.log(seats)
+    
     return (
         <div className="seats">
             <h2 className="page-title">Selecione o(s) assento(s)</h2>
             <div className="seats-content">
             {seats.map((seat, index) => (
-                <Seat key={index} number={seat.name} isAvailable={seat.isAvailable} isSelect={seat.isSelected} />
+                <Seat key={index} number={seat.name} selected={seat.selected} isAvailable={seat.isAvailable} seatID={seat.id} addSelect={addSelect}/>
             ))}
             </div>
             <div className="color-seats-menu">
@@ -111,7 +133,7 @@ function Seats({
                 <h3>CPF do comprador:</h3>
                 <input type="text" name="buyer-cpf" placeholder="Apenas números..." className="input-text" value={cpfBuyer} onChange={e => setCPFBuyer(e.target.value)} />
             </div>
-            <Link to="/sucesso"><div className="button" onClick={finishingOrder}>Reservar assento(s)</div></Link>
+            <div className="button" onClick={finishingOrder}>Reservar assento(s)</div>
         </div>
     )
 }
