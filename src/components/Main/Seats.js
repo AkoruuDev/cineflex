@@ -29,6 +29,8 @@ function Seats({
     const [seats, setSeats] = useState([]);
     const [nameBuyer, setNameBuyer] = useState("");
     const [cpfBuyer, setCPFBuyer] = useState("");
+    const [isErrorCPF, setIsErrorCPF] = useState(false);
+    const [isErrorName, setIsErrorName] = useState(false)
     const navigate = useNavigate();
 
     const { sessionID } = useParams();
@@ -85,7 +87,24 @@ function Seats({
             console.log(order);
             navigate("/sucesso");
         } else {
-            console.log("Coloca um alerta ae, mano!")
+            console.log("Coloca um alerta ae, mano!");
+            console.log(typeof(cpfBuyer))
+            if (cpfBuyer.length !== 11) {
+                if (typeof(parseInt(cpfBuyer)) !== 'number' || cpfBuyer.length === 0) {
+                    setIsErrorCPF(true);
+                    console.log(typeof(parseInt(cpfBuyer)) !== 'number')
+                    console.log('number')
+                } else {
+                    setIsErrorCPF(false)
+                }
+            } else {
+                setIsErrorCPF(false)
+            }
+            if (nameBuyer === "") {
+                setIsErrorName(true)
+            } else {
+                setIsErrorName(false)
+            }
         }
     }
 
@@ -119,8 +138,10 @@ function Seats({
             <div className="ending">
                 <h3>Nome do comprador:</h3>
                 <input type="text" name="buyer-name" placeholder="Digite seu nome..." className="input-text" value={nameBuyer} onChange={e => setNameBuyer(e.target.value)} />
+                {isErrorName ? <p className="error">É necessário preencher o nome</p> : ""}
                 <h3>CPF do comprador:</h3>
                 <input type="text" name="buyer-cpf" placeholder="Apenas números..." className="input-text" value={cpfBuyer} onChange={e => setCPFBuyer(e.target.value)} />
+                {isErrorCPF ? <p className="error">Coloque apenas números, é necessário os 11 digitos do CPF</p> : ""}
             </div>
             <div className="button" onClick={finishingOrder}>Reservar assento(s)</div>
         </div>

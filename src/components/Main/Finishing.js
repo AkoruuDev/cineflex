@@ -29,7 +29,7 @@ function Finishing({ order }) {
                 <p>{order.dayDate} {order.dayHour}</p>
                 <h2 className="finish-subtitle">Ingressos</h2>
                 {order.mySeats.map(seat => (
-                    <p>{`Assento ${seat.name}`}</p>
+                    <p key={seat.id}>{`Assento ${seat.name}`}</p>
                 ))}
                 <h2 className="finish-subtitle">Comprador</h2>
                 <p>{`Nome: ${order.nameBuyer}`}</p>
