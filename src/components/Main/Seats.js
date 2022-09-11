@@ -30,7 +30,9 @@ function Seats({
     const [nameBuyer, setNameBuyer] = useState("");
     const [cpfBuyer, setCPFBuyer] = useState("");
     const [isErrorCPF, setIsErrorCPF] = useState(false);
-    const [isErrorName, setIsErrorName] = useState(false)
+    const [isErrorName, setIsErrorName] = useState(false);
+    const [seatIsSelected, setSeatIsSelected] = useState(false);
+
     const navigate = useNavigate();
 
     const { sessionID } = useParams();
@@ -89,21 +91,37 @@ function Seats({
         } else {
             console.log("Coloca um alerta ae, mano!");
             console.log(typeof(cpfBuyer))
-            if (cpfBuyer.length !== 11) {
-                if (typeof(parseInt(cpfBuyer)) !== 'number' || cpfBuyer.length === 0) {
+            const thisCPF = Number(cpfBuyer);
+            console.log(thisCPF.length)
+            console.log(thisCPF.length === 11)
+            if (thisCPF.length === 11) {
+                console.log('chegou')
+                console.log(thisCPF + " oioi " + typeof(thisCPF))
+                if (thisCPF === NaN || cpfBuyer.length === 0) {
                     setIsErrorCPF(true);
-                    console.log(typeof(parseInt(cpfBuyer)) !== 'number')
+                    console.log(thisCPF)
                     console.log('number')
                 } else {
-                    setIsErrorCPF(false)
+                    if(cpfBuyer.length === 11) {
+                        setIsErrorCPF(false)
+                    } else {
+                        setIsErrorCPF(true)
+                    }
                 }
             } else {
-                setIsErrorCPF(false)
+                setIsErrorCPF(true)
             }
             if (nameBuyer === "") {
                 setIsErrorName(true)
             } else {
                 setIsErrorName(false)
+            }
+            if (mySeats.length === 0) {
+                console.log("olha só")
+                setSeatIsSelected(true);
+                setTimeout(() => setSeatIsSelected(false), 3000)
+            } else {
+                console.log("olha lá")
             }
         }
     }
@@ -144,6 +162,7 @@ function Seats({
                 {isErrorCPF ? <p className="error">Coloque apenas números, é necessário os 11 digitos do CPF</p> : ""}
             </div>
             <div className="button" onClick={finishingOrder}>Reservar assento(s)</div>
+            <div className={`error-box ${seatIsSelected ? "" : 'none'}`}>É necessário escolher pelo menos um assento</div>
         </div>
     )
 }
